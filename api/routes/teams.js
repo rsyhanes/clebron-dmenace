@@ -6,6 +6,6 @@ const router = express.Router()
 router.get('/', teamsController.get)
 router.get('/:id', teamsController.getOne)
 router.post('/', teamsController.post)
-router.delete('/:id', teamsController.delete)
+router.delete('/:name', teamsController.delete)
 
 module.exports = router

@@ -37,7 +37,7 @@ exports.delete = async (req, res) => {
     try {
         await Team.destroy({
             where: {
-                id: req.param.id
+                name: req.params.name
             }
         })
         res.sendStatus(200)
