@@ -1,19 +1,11 @@
-import {
-    login
-} from './../../api/users';
-
-export const logIn = user => async dispatch => {
-    const success = await login(user);
-    if (success) {
-        console.log('here');
-        dispatch({ type: 'USER_LOGIN', user: user, success: true })
-    } else {
-        console.log('there');
-        dispatch({ type: 'USER_LOGIN', user: null, success: false })
-    }
+export function signUp(user) {
+    return { type: "USER_SIGNUP", user };
 }
 
-export const logOut = user => dispatch => {
-    console.log('logout action');
-    dispatch({ type: 'USER_LOGOUT' })
+export function logIn(user) {
+    return { type: "USER_LOGIN", user };
+}
+
+export function logOut(user) {
+    return { type: "USER_LOGOUT" };
 }

@@ -6,8 +6,7 @@ exports.signUp = async (req, res) => {
         const hashed = await passService.hash(req.body.password)
         await User.create({
             username: req.body.username,
-            password: hashed,
-            email: req.body.email
+            password: hashed
         })
         res.sendStatus(200)
     } catch (error) {
@@ -17,7 +16,7 @@ exports.signUp = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-        const user = await User.findOne({ where: { email: req.body.username } })
+        const user = await User.findOne({ where: { username: req.body.username } })
         if(user !== null  && await passService.compare(req.body.password, user.password)) {
             res.sendStatus(200)
         } else {
