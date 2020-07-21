@@ -1,4 +1,4 @@
-const User = require('./../models/user')
+const { User } = require('./../models/models')
 const passService = require('./../service/password-service')
 
 exports.signUp = async (req, res) => {
@@ -17,7 +17,7 @@ exports.signUp = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-        const user = await User.findOne({ where: { username: req.body.username } })
+        const user = await User.findOne({ where: { email: req.body.username } })
         if(user !== null  && await passService.compare(req.body.password, user.password)) {
             res.sendStatus(200)
         } else {
