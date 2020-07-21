@@ -13,6 +13,8 @@ app.use(cors())
 app.use('/api', routes.security)
 app.use('/api/team', routes.teams)
 app.use('/api/employee', routes.employees)
+app.use('/api/sprint', routes.sprints)
+app.use('/api/user', routes.users)
 
 app.use((req, resp) => {
     resp.status(404).send('404 - Not Found')
@@ -27,9 +29,9 @@ app.use((err, req, res, next) => {
 
 
 const initDb = function(sequelize) {
-    if (app.get('env') === 'development') {
-        return sequelize.sync({ force: true })
-    }
+    // if (app.get('env') === 'development') {
+    //     return sequelize.sync({ force: true })
+    // }
     return sequelize.authenticate()
 }
 
